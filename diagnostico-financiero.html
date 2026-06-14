@@ -297,6 +297,27 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
   animation: gradientShift 3s ease infinite;
 }
 
+
+.gifts-eyebrow { font-size: 13px; font-weight: 600; color: var(--gold); margin-bottom: 12px; letter-spacing: .02em; }
+.gift-card { background: var(--surface); border: 1px solid var(--surface3); border-radius: 10px; padding: 13px 16px; margin-bottom: 8px; display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.2s; }
+.gift-card:hover { border-color: var(--gold-border); }
+.gift-num { background: var(--gold); color: #080808; border-radius: 99px; padding: 3px 10px; font-size: 11px; font-weight: 700; flex-shrink: 0; white-space: nowrap; height: fit-content; margin-top: 2px; }
+.gift-body { flex: 1; }
+.gift-title { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 3px; }
+.gift-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 4px; }
+.gift-value { font-size: 11px; font-weight: 600; color: var(--gold); }
+.stack-box { background: var(--surface); border: 1px solid var(--surface3); border-radius: 14px; overflow: hidden; }
+.stack-title { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; padding: 12px 16px; border-bottom: 1px solid var(--surface3); }
+.stack-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid var(--surface3); }
+.stack-label { font-size: 13px; color: var(--muted); }
+.stack-price { font-size: 12px; color: var(--muted2); text-decoration: line-through; flex-shrink: 0; margin-left: 8px; }
+.stack-total { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--surface2); border-bottom: 1px solid var(--surface3); }
+.stack-total span:first-child { font-size: 13px; font-weight: 500; color: var(--cream); }
+.stack-total-price { font-size: 16px; font-weight: 600; color: var(--muted); text-decoration: line-through; }
+.stack-you-pay { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: rgba(201,168,76,0.08); border-top: 1px solid var(--gold-border); }
+.stack-you-pay span:first-child { font-size: 14px; font-weight: 600; color: var(--cream); }
+.stack-you-price { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--gold); }
+
 </style>
 </head>
 <body>
@@ -526,6 +547,29 @@ function showResult() {
   html += '<div class="day-row blurred"><div class="day-badge locked">4</div><div><div class="day-title">Días 4 al 7 — bloqueados</div><div class="day-desc">Accede al plan completo</div></div></div>';
   html += '</div>';
 
+
+  // REGALOS ESPECIALES
+  html += '<div class="result-section">';
+  html += '<div class="gifts-eyebrow">🎁 Regalos especiales incluidos con tu compra</div>';
+  html += '<div class="gift-card"><div class="gift-num">Regalo #1</div><div class="gift-body"><div class="gift-title">Calculadora de Brecha Financiera</div><div class="gift-desc">Descubre exactamente cuánto te sobra o falta cada mes. 3 pasos simples, sin fórmulas complicadas.</div><div class="gift-value">Valor: $9.99 USD</div></div></div>';
+  html += '<div class="gift-card"><div class="gift-num">Regalo #2</div><div class="gift-body"><div class="gift-title">27 Gastos Hormiga que te Roban Dinero</div><div class="gift-desc">Los 27 gastos invisibles más comunes con su costo real mensual y una alternativa concreta para eliminar cada uno.</div><div class="gift-value">Valor: $7.99 USD</div></div></div>';
+  html += '<div class="gift-card"><div class="gift-num">Regalo #3</div><div class="gift-body"><div class="gift-title">Checklist: Tu Primer Mes Financiero Ordenado</div><div class="gift-desc">10 pasos semana a semana para convertir el plan de 7 días en un hábito permanente. Con casillas para marcar.</div><div class="gift-value">Valor: $6.99 USD</div></div></div>';
+  html += '</div>';
+
+  // STACK DE VALOR
+  html += '<div class="result-section">';
+  html += '<div class="stack-box">';
+  html += '<div class="stack-title">Lo que recibes hoy</div>';
+  html += '<div class="stack-row"><span class="stack-label">Plan financiero de 7 días personalizado</span><span class="stack-price">$9.99</span></div>';
+  html += '<div class="stack-row"><span class="stack-label">Regalo #1 — Calculadora de Brecha Financiera</span><span class="stack-price">$9.99</span></div>';
+  html += '<div class="stack-row"><span class="stack-label">Regalo #2 — 27 Gastos Hormiga</span><span class="stack-price">$7.99</span></div>';
+  html += '<div class="stack-row"><span class="stack-label">Regalo #3 — Checklist Primer Mes Ordenado</span><span class="stack-price">$6.99</span></div>';
+  html += '<div class="stack-total"><span>Valor total del paquete</span><span class="stack-total-price">$34.96 USD</span></div>';
+  html += '<div class="stack-you-pay"><span>Tú pagas hoy</span><span class="stack-you-price">$5.99 USD</span></div>';
+  html += '</div>';
+  html += '</div>';
+
+
   html += '<div class="pay-box"><div class="pay-inner">';
   html += '<div class="scarcity-box">';
   html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:16px;">📈</span><span style="font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.03em;text-transform:uppercase;">Precio de lanzamiento</span></div>';
@@ -540,8 +584,8 @@ function showResult() {
   html += '<div class="pay-title">Desbloquea tu plan completo de 7 días</div>';
   html += '<div class="pay-subtitle">' + d.pt + '</div>';
   html += '<div class="pay-features"><div class="pay-feat"><span class="feat-check">✓</span>7 acciones concretas, una por día</div><div class="pay-feat"><span class="feat-check">✓</span>PDF descargable para tener siempre a mano</div><div class="pay-feat"><span class="feat-check">✓</span>Adaptado exactamente a tu causa raíz</div><div class="pay-feat"><span class="feat-check">✓</span>Acceso de por vida · Sin suscripción</div></div>';
-  html += '<div class="price-row"><span class="price-old">$9.99 USD</span><span class="price-new">$5.99</span></div>';
-  html += '<div><span class="price-save">Ahorras 40% — solo hoy</span></div>';
+  html += '<div class="price-row"><span class="price-old">$34.96 USD</span><span class="price-new">$5.99</span></div>';
+  html += '<div><span class="price-save">Ahorras 83% — solo hoy</span></div>';
   html += '<div class="price-note">Pago único · Descarga inmediata</div>';
   html += '<a href="' + d.l + '" target="_blank" class="pay-cta">Quiero mi plan ahora →</a>';
   html += '<div class="pay-guarantee">🔒 Compra 100% segura vía Hotmart</div>';
